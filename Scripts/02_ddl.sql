@@ -72,7 +72,7 @@ CREATE TABLE product(
 	name varchar2(100),
 	price number(8),
 	pictureurl varchar(50),
-	descritpion varchar2(1000)
+	description varchar2(1000)
 );
 
 

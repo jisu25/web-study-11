@@ -10,6 +10,7 @@
 </head>
 <body>
 	<c:set var="con" value="${JndiDs.getConnection()}"></c:set>
-	<c:out value="${ con}"></c:out>
+	<c:out value="${ con}"></c:out><br>
+	<a href="productList.do">상품 리스트로 이동</a>
 </body>
 </html>

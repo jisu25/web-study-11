@@ -1,0 +1,59 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>상품 리스트</title>
+</head>
+<link rel="stylesheet" type="text/css" href="css/shopping.css">
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+	$(function(){
+	    $.ajax({
+	        type: "POST",
+	        url: "productList.do",
+	        dataType: "json",
+	        success: function(data) {
+	        	var str = "";
+	        	$.each(data, function(i) {
+	        		str += "<tr><td>" + data[i].code + "</td><td>" + data[i].name + "</td><td>" + data[i].price + "</td>"
+	        			+ "<td><a href='productUpdate.do?code=" + data[i].code + "'>상품 수정</a></td>"
+	    				+ "<td><a href='productDelete.do?code=" + data[i].code + "'>상품 삭제</a></td></tr>";
+	        	});
+	        	$("#list_table").append(str);
+	        }
+	    });
+	});
+</script>
+<body>
+	<div id="wrap" align="center">
+	<h1>상품 리스트 - 관리자 페이지</h1>
+	<table class="list" id="list_table">
+		<tr>
+			<td colspan="5" style="border: white; text-algin: right">
+				<a href="productWrite.do">상품 등록</a>
+			</td>
+		</tr>
+		<tr>
+			<th>번호</th>
+			<th>이름</th>
+			<th>가격</th>
+			<th>수정</th>
+			<th>삭제</th>
+		</tr>
+		<%-- <c:forEach var="product" items="${productList }">
+			<tr class="record"> 
+				<td>${product.code }</td>
+				<td>${product.name }</td>
+				<td><fmt:formatNumber value="${product.price }" pattern="#,###"/>원</td>
+				<td><a href="productUpdate.do?code=${product.code }">상품 수정</a>
+				<td><a href="productDelete.do?code=${product.code }">상품 삭제</a></td>
+				</tr>
+		</c:forEach> --%>
+	</table>
+	</div>
+</body>
+</html>
