@@ -16,7 +16,7 @@
 		    var formData = new FormData(form);
 
 		    $.ajax({
-		        url: "productWpdate.do",
+		        url: "productWrite.do",
 		        type: "POST",
 		        enctype: "multipart/form-data",
 		        data: formData,

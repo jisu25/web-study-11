@@ -38,6 +38,7 @@ public class ProductWriteHandler extends HttpServlet {
 		if(request.getMethod().equalsIgnoreCase("GET")) {
 			System.out.println("ProductWriteHandler >> GET");
 			request.getRequestDispatcher("product/productWrite.jsp").forward(request, response);
+			
 		} else {
 			System.out.println("ProductWriteHandler >> POST");
 			
